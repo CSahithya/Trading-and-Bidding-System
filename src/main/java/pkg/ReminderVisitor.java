@@ -46,11 +46,11 @@ public class ReminderVisitor extends NodeVisitor {
             String s[]= sb.toString().split("\n");
             for(int i=0;i<s.length;i++){
                 String temp[] = s[i].split(":");
-                String[] exp = temp[s.length-1].split(" - ");
+                String[] exp = temp[temp.length-1].split(" - ");
                 DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
                 String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new java.util.Date());
                 Date d1 = simpleDateFormat.parse(String.valueOf(timeStamp));
-                Date d2 = simpleDateFormat.parse(temp[s.length-2]);
+                Date d2 = simpleDateFormat.parse(temp[temp.length-2]);
                 if(d1.compareTo(d2)>0){
                     int diff = (d2.getMinutes() - d1.getMinutes());
                     int comp = Integer.parseInt(String.valueOf(exp[1]));
