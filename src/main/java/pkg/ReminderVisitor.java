@@ -44,6 +44,7 @@ public class ReminderVisitor extends NodeVisitor {
                 sb.append(sc.nextLine()+"\n");
             }
             String s[]= sb.toString().split("\n");
+            if(sb.length()>1)
             for(int i=0;i<s.length;i++){
                 String temp[] = s[i].split(":");
                 String[] exp = temp[temp.length-1].split(" - ");
