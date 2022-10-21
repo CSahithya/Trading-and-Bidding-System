@@ -1,10 +1,10 @@
 package pkg;
 
 public interface ProductMenu{
-    public void showMenu();
-    public void showAddButton();
-    public void showViewButton();
-    public void showRadioButton();
-    public void showLabels();
-    public void showComboxes();
+    public abstract Product[] showMenu();
+    public abstract void showAddButton();
+    public abstract void showViewButton();
+    public abstract void showRadioButton();
+    public abstract void showLabels();
+    public abstract void showComboxes();
 }

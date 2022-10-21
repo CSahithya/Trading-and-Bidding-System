@@ -1,12 +1,8 @@
 package pkg;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
 
 public class PTBS{
     private JLabel Username, Password;
@@ -35,7 +31,7 @@ public class PTBS{
         panel.setLayout(null);
         frame.setTitle("LOGIN PAGE");
         frame.setLocation(400, 200);
-        frame.setSize(400, 300);
+        frame.setSize(400, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Username = new JLabel("Username");
@@ -54,11 +50,21 @@ public class PTBS{
         Password.setBounds(30, 80, 100, 20);
         panel.add(Password);
 
+        Password.setLabelFor(passwordField1);
+        Username.setLabelFor(textField1);
+
         Login = new JButton("Login");
-        Login.setBounds(70,150,100,20);
+        Login.setBounds(200,150,70,20);
+
         Login.setForeground(Color.WHITE);
         Login.setBackground(Color.BLACK);
         panel.add(Login);
+
+        JButton createUser = new JButton("Create User");
+        createUser.setBounds(70,150,120,20);
+        createUser.setForeground(Color.WHITE);
+        createUser.setBackground(Color.BLACK);
+        panel.add(createUser);
 
         Login.addActionListener(e -> {
             UserInfoItem user = new UserInfoItem();
@@ -85,6 +91,20 @@ public class PTBS{
                 jp.showMessageDialog(frame,"Invalid Login");
             }
         });
+
+        createUser.addActionListener(e -> {
+            JOptionPane jp = new JOptionPane();
+            String s = jp.showInputDialog("UserType: 0(Seller)/1(Buyer)");
+            if(facade.createNewUser(s, textField1.getText(), String.valueOf(passwordField1.getPassword()))){
+                JOptionPane.showMessageDialog(frame,"Success!");
+            }
+            else{
+                JOptionPane.showMessageDialog(frame,"Failure, try again!");
+            }
+            textField1.setText("");
+            passwordField1.setText("");
+        });
+        panel.setVisible(true);
         frame.add(panel);
         frame.setVisible(true);
     }
@@ -118,23 +138,53 @@ public class PTBS{
         }
         tp.add("Meat",p1);
         tp.add("Produce",p2);
-        JButton save = new JButton("Save");
-        save.setBounds(10, 10, 70, 30);
+        JButton offer = new JButton("Offer");
+        offer.setBounds(10, 10, 70, 30);
 
-        save.addActionListener(e -> {
+        JButton view = new JButton("View");
+        view.setBounds(100, 10, 70, 30);
+
+        view.addActionListener(e -> {
+            String result="";
+            for(int i=0;i<checkBox.length;i++) {
+                if (checkBox[i].isSelected()) {
+                    String s = facade.theProductList[i].getType()+":"+facade.theProductList[i].getName();
+                    result += s+"\n"+facade.viewTrading(s)+"\n";
+                }
+            }
+            JOptionPane f = new JOptionPane();
+            if(result.isEmpty()){
+                JOptionPane.showMessageDialog(f, "Select products to view trading");
+            }
+            else{
+                JOptionPane.showMessageDialog(f, result);
+                JOptionPane.showMessageDialog(f, "Count of Expired Products in the Entire File: "+facade.remind());
+            }
+        });
+
+        offer.addActionListener(e -> {
             for(int i=0;i<checkBox.length;i++){
                 if(checkBox[i].isSelected()) {
                     facade.theSelectedProduct = new Product();
                     facade.theSelectedProduct.setName(facade.theProductList[i].getName());
                     facade.theSelectedProduct.setType(facade.theProductList[i].getType());
+                    JOptionPane f = new JOptionPane();
+                    String s = JOptionPane.showInputDialog(f,"Enter bidding price :"+facade.theSelectedProduct.getName());
+                    if(s==null){
+                        break;
+                    }
+                    //System.out.println(offerInfo);
+                    facade.theSelectedProduct.setOffering("Buyer - "+facade.user.getUserName()+": Price - "+s);
                     facade.AttachProductToUser();
+                    facade.addTrading();
                 }
 
             }
-            facade.viewTrading();
+            //JOptionPane jp = new JOptionPane();
         });
 
-        buyerPanel.add(save);
+        buyerPanel.add(offer);
+        buyerPanel.add(view);
         frame.add(buyerPanel);
         frame.add(tp);
         frame.setVisible(true);
@@ -151,8 +201,8 @@ public class PTBS{
         JTabbedPane tp = new JTabbedPane();
         tp.setBounds(10,10,200,200);
 
-        JPanel buyerPanel = new JPanel();
-        buyerPanel.setBounds(10, 150,100,100);
+        JPanel sellerPanel = new JPanel();
+        sellerPanel.setBounds(10, 250,200,100);
 
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
@@ -171,27 +221,61 @@ public class PTBS{
         }
         tp.add("Meat",p1);
         tp.add("Produce",p2);
+
+
+        JLabel timerLabel = new JLabel("Set the expiration time");
+        timerLabel.setBounds(10,40,150,20);
+        JTextField timer = new JTextField();
+        timer.setBounds(10,10,100,20);
+        timerLabel.setLabelFor(timer);
+        //sellerPanel.add(timer);
+
+        JTextPane time = new JTextPane();
+        time.setBounds(10, 150,200,100);
+        time.add(timerLabel);
+        time.add(timer);
+
         JButton save = new JButton("Save");
-        save.setBounds(10, 10, 70, 30);
+        save.setBounds(15, 50, 70, 30);
 
         save.addActionListener(e -> {
-            for(int i=0;i<checkBox.length;i++){
+            int i;
+            for(i=0;i<checkBox.length;i++){
                 if(checkBox[i].isSelected()) {
                     System.out.println(checkBox[i].getName());
                     facade.theSelectedProduct = new Product();
                     facade.theSelectedProduct.setName(facade.theProductList[i].getName());
                     facade.theSelectedProduct.setType(facade.theProductList[i].getType());
+                    JOptionPane f = new JOptionPane();
+                    String s = JOptionPane.showInputDialog(f,"Enter offering price :"+facade.theSelectedProduct.getName());
+                    if(s==null){
+                        break;
+                    }
+                    //System.out.println(offerInfo);
+                    String t = timer.getText();
+                    if(t == null){
+                        t = "20";
+                    }
+                    String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new java.util.Date());
+                    facade.theSelectedProduct.setOffering("Seller - "+facade.user.getUserName()+": Price - "+s+": "+timeStamp+": Expiry(minutes) - "+t);
                     facade.AttachProductToUser();
                     facade.addTrading();
                 }
-
+            }
+            JOptionPane f = new JOptionPane();
+            if(i>=checkBox.length) {
+                JOptionPane.showMessageDialog(f, "Operation Successful. Please Login again!");
+                System.exit(0);
+            }
+            else{
+                JOptionPane.showMessageDialog(f, "Operation Unsuccessful. Please try again!");
             }
 
-            facade.viewTrading();
         });
 
-        buyerPanel.add(save);
-        frame.add(buyerPanel);
+        sellerPanel.add(save);
+        frame.add(time);
+        frame.add(sellerPanel);
         frame.add(tp);
         frame.setVisible(true);
 

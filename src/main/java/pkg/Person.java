@@ -3,7 +3,6 @@ package pkg;
 public abstract class Person{
     private ProductMenu theProductMenu;
     public abstract void showMenu();
-
     public void showAddButton(){
 
     }
@@ -16,5 +15,5 @@ public abstract class Person{
     public void showLabels(){
 
     }
-    public abstract ProductMenu CreateProductMenu();
+    public abstract Product[] CreateProductMenu();
 }
