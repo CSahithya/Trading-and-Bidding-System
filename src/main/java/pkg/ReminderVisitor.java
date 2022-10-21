@@ -64,7 +64,8 @@ public class ReminderVisitor extends NodeVisitor {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.println("Buyer Offering Enountered");
+            //e.printStackTrace();
         }
 
     }
