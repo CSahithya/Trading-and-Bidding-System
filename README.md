@@ -49,3 +49,14 @@ Implementation: While loading data from the file, product and offering iterator 
 Implementation: While displaying the offerings to Buyer we check for the expired items (count is calculated)
  
 #### The Screenshots of the various instances is attached below - 
+
+<img width="291" alt="image" src="https://user-images.githubusercontent.com/112609945/197127356-ec279442-8c72-4837-86f7-9e422db84854.png">
+<img width="287" alt="image" src="https://user-images.githubusercontent.com/112609945/197127518-9f182467-8cd5-4e8f-8b1a-448e8b8fa0e8.png">
+<img width="353" alt="image" src="https://user-images.githubusercontent.com/112609945/197127573-7979c04f-8ad1-4736-9b6f-0b6f94abc429.png">
+<img width="249" alt="image" src="https://user-images.githubusercontent.com/112609945/197127620-157390c1-7762-4238-a187-376c9584beef.png">
+<img width="289" alt="image" src="https://user-images.githubusercontent.com/112609945/197127726-06ce79cc-0e71-4e7a-ab5d-e447864ca929.png">
+<img width="290" alt="image" src="https://user-images.githubusercontent.com/112609945/197127806-7e6f14a8-6019-4687-b227-6bfc5c5ae44a.png">
+<img width="290" alt="image" src="https://user-images.githubusercontent.com/112609945/197127867-c3c09ce8-668b-499d-99ec-19ee95dcc688.png">
+<img width="287" alt="image" src="https://user-images.githubusercontent.com/112609945/197127927-b97af273-1446-43b6-9c4b-55941a6220d7.png">
+
+
