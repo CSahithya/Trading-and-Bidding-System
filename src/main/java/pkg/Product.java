@@ -2,6 +2,14 @@ package pkg;
 
 import java.util.ArrayList;
 
+/*
+The Product Class that has the Product information
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class Product {
     private String type;
     private String name;

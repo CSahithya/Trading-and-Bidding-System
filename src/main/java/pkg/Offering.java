@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+/*
+The Offering java class creates the offering (writes the offering to the text file locally)
+Called from Facade
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class Offering{
     //private String name;
     //private String productType;

@@ -4,6 +4,15 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/*
+This java file is a single stop loader for all the files present. Different classes call this file to
+get their particular fields loaded with data from these files.
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class LoadData {
     File buyers = new File("src\\main\\resources\\BuyerInfo.txt");
     File sellers = new File("src\\main\\resources\\SellerInfo.txt");

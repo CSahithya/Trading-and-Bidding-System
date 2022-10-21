@@ -4,6 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/*
+Iterates through the offering file to get all buyers and their offering along with sellers and their bids
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class OfferingIterator{
     HashMap<String, String> hm = new HashMap<>();
     OfferingIterator(){

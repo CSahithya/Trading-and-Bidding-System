@@ -9,6 +9,14 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
+/*
+The Reminder Visitor class where the Date is compared and checked to see if an offering is expired
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class ReminderVisitor extends NodeVisitor {
     int expiredCount;
     ReminderVisitor(){

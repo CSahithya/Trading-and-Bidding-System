@@ -4,6 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 
+/*
+The Main GUI class file where all the frames and screens are implemented
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
 public class PTBS{
     private JLabel Username, Password;
     private JTextField textField1;

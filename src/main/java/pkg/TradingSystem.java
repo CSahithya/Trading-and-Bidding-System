@@ -4,6 +4,15 @@ import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/*
+The TradingSystem file which contains the main to run the entire system.
+This is the root file to execute or check the functionality of the code.
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class TradingSystem{
     Facade f;
     PTBS pb;

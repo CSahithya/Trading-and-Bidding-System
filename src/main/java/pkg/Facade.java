@@ -3,6 +3,15 @@ package pkg;
 import java.io.*;
 import java.util.*;
 
+/*
+The Facade class that acts as an Interface between the GUI and the underlying code.
+Various instances of calling the code is commented below
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class Facade{
     protected int userType;
     protected Product theSelectedProduct;
@@ -21,6 +30,7 @@ public class Facade{
         System.out.println("In Facade Class");
     }
 
+    //Login has been implemented as a Facade functionality instead of creating the new task
     public boolean login(){
         UserInfoItem[] buyers = ld.getBuyers();
         UserInfoItem[] sellers = ld.getSellers();
@@ -41,10 +51,13 @@ public class Facade{
         return false;
     }
 
+    // creates a local new file to add all the products the seller chooses to offer
     public void addTrading(){
         System.out.println("Offering added "+theSelectedProduct);
         offer.createOffering(theSelectedProduct,user.getUserName());
     }
+
+    // displays all seller offered  products to the buyer to bid
     public String viewTrading(String s){
         //theOfferingList = new ProduceProductMenu().showMenu();
         OfferingIterator oi = new OfferingIterator();
@@ -61,15 +74,18 @@ public class Facade{
     public void submitBidding(){
 
     }
+    //Call this function to see all the Expired Offerings in the File.
     public int remind(){
         Trading t = new Trading();
         ReminderVisitor rv = new ReminderVisitor();
         rv.visitTrading(t);
         return  rv.expiredCount;
     }
+
     public void createUser(UserInfoItem userInfoItem){
         this.user = userInfoItem;
     }
+
     public boolean createNewUser(String usertype, String userName, String pswd){
         File addUser;
         try{
@@ -109,6 +125,7 @@ public class Facade{
         }
 
     }
+    //Functionality to add all the Buyers and Sellers with their selected product to the final File.
     public void AttachProductToUser(){
         try{
             File userProduct = new File("src\\main\\resources\\UserProduct.txt");

@@ -1,5 +1,11 @@
 package pkg;
-
+/*
+The NodeVisitor File
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
 abstract public class NodeVisitor {
     public NodeVisitor() {
     }

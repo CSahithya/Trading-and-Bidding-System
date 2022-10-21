@@ -2,6 +2,14 @@ package pkg;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/*
+The Product Iterator file to iterate through the ProductList
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class ProductIterator implements Iterator<Product> {
     ClassProductList theProductList;
     int currentProduct = -1;

@@ -1,5 +1,13 @@
 package pkg;
 
+/*
+The User Info Item holds the user information (Buyer Seller details)
+author: Sahithya Cherukuri
+scheru20
+SER515-Design Patterns
+PTBS
+ */
+
 public class UserInfoItem {
 
     private String userName;
