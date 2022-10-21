@@ -3,7 +3,7 @@
 SER 515 
  ## Product Trading and Bidding System
 
-The System Functioning is as follows: 
+####The System Functioning is as follows: 
 - Seller logs into the system and chooses the products they wish to sell.
 - Seller is prompted to enter the price (offerings) for each of the selected product
 - Seller completes his offering he is logged out from the system
@@ -21,7 +21,7 @@ The System Functioning is as follows:
 - The later functionality includes seller accepting the bid from any interested buyer. 
 
 
-The functionality of the diagrams is as follows:
+####The functionality of the diagrams is as follows:
 
 **Facade Design Pattern**
 - Facade acts as the interface between GUI and underlying classes. 
@@ -48,4 +48,4 @@ Implementation: While loading data from the file, product and offering iterator 
 
 Implementation: While displaying the offerings to Buyer we check for the expired items (count is calculated)
  
-The Screenshots of the various instances is attached below - 
+####The Screenshots of the various instances is attached below - 
