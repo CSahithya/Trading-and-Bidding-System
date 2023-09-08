@@ -1,6 +1,5 @@
-# PTBS-SER515-CS
- Author: Sahithya Cherukuri (scheru20) --
-SER 515 
+# PTBS
+ Author: Sahithya Cherukuri  
  ## Product Trading and Bidding System
 
 #### The System Functioning is as follows: 
